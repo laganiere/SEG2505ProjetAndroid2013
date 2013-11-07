@@ -11,14 +11,14 @@
     <string name="button_listeCategorie">Liste des categories</string>
     <string name="title_activity_liste_categories">ListeCategoriesActivity</string>
     <string-array name="super_categories">
-        <item >Super Categorie 1</item>
-        <item >Super Categorie 2</item>
-        <item >Super Categorie 3</item>
+        <item >Technologies</item>
+        <item >Loisirs</item>
+        <item >Langues</item>
     </string-array>
     <string-array name="sous_categories_1">
-        <item >Categorie 1.1</item>
-        <item >Categorie 1.2</item>
-        <item >Categorie 1.3</item>
+        <item >Informatique</item>
+        <item >Audio-Video</item>
+        <item >Telephonie</item>
     </string-array>
     <string-array name="sous_categories_2">
         <item >Categorie 2.1</item>
