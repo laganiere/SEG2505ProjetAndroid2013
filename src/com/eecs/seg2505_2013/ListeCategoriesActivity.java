@@ -19,7 +19,7 @@ public class ListeCategoriesActivity extends SwarmActivity {
 	
 	List<String> groupList;
     Map<String, List<String>> sousDomaines; // pour les sous-domaines
-    ExpandableListView liste_categories;
+    ExpandableListView liste_categories;    // pour les categories
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
