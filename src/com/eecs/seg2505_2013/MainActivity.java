@@ -74,4 +74,9 @@ public class MainActivity extends SwarmActivity {
 			Swarm.showDashboard();
 		}
 	}
+	
+	public void onTestMessages(View view) {
+		Intent intent = new Intent(this, MessagesActivity.class);
+		startActivity(intent);
+	}
 }

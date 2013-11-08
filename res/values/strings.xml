@@ -10,27 +10,30 @@
     <string name="button_AjouterCategorie">Ajouter une categorie</string>
     <string name="button_listeCategorie">Liste des categories</string>
     <string name="title_activity_liste_categories">ListeCategoriesActivity</string>
+
     <string-array name="super_categories">
-        <item >Technologies</item>
-        <item >Loisirs</item>
-        <item >Langues</item>
+        <item>Super Categorie 1</item>
+        <item>Super Categorie 2</item>
+        <item>Super Categorie 3</item>
     </string-array>
     <string-array name="sous_categories_1">
-        <item >Informatique</item>
-        <item >Audio-Video</item>
-        <item >Telephonie</item>
+        <item>Categorie 1.1</item>
+        <item>Categorie 1.2</item>
+        <item>Categorie 1.3</item>
     </string-array>
     <string-array name="sous_categories_2">
-        <item >Categorie 2.1</item>
-        <item >Categorie 2.2</item>
-        <item >Categorie 2.3</item>
+        <item>Categorie 2.1</item>
+        <item>Categorie 2.2</item>
+        <item>Categorie 2.3</item>
     </string-array>
     <string-array name="sous_categories_3">
-        <item >Categorie 3.1</item>
-        <item >Categorie 3.2</item>
-        <item >Categorie 3.3</item>
+        <item>Categorie 3.1</item>
+        <item>Categorie 3.2</item>
+        <item>Categorie 3.3</item>
     </string-array>
-        <string name="label_liste_categorie">Voila la liste des categories</string>
-        <string name="button_showSwarm">Show Swarm</string>
+
+    <string name="label_liste_categorie">Voila la liste des categories</string>
+    <string name="button_showSwarm">Show Swarm</string>
+    <string name="title_activity_messages">MessagesActivity</string>
 
 </resources>

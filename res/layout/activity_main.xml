@@ -57,4 +57,11 @@
         android:onClick="OnSwarm"
         android:text="@string/button_showSwarm" />
 
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onTestMessages"
+        android:text="Test messages" />
+
 </LinearLayout>

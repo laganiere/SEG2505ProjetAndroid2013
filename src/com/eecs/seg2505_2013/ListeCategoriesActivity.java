@@ -18,8 +18,8 @@ import com.swarmconnect.SwarmActivity;
 public class ListeCategoriesActivity extends SwarmActivity {
 	
 	List<String> groupList;
-    Map<String, List<String>> sousDomaines; // pour les sous-domaines
-    ExpandableListView liste_categories;    // pour les categories
+    Map<String, List<String>> sousDomaines;
+    ExpandableListView liste_categories;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
