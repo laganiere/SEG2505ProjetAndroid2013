@@ -35,6 +35,7 @@ public class MessagesActivity extends SwarmActivity {
 	public void onGetMessages(View view) {
 				
 		SwarmMessageThread.getAllThreads(new GotThreadsCB() {
+			// boucle de lecture des messages
 			
 			@Override
 			public void gotThreads(List<SwarmMessageThread> threads) {
