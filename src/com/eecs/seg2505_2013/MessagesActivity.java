@@ -8,17 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
-import com.swarmconnect.SwarmMessage;
-import com.swarmconnect.SwarmMessageThread;
-import com.swarmconnect.SwarmMessageThread.GotMessagesCB;
-import com.swarmconnect.SwarmMessageThread.GotThreadsCB;
-import com.swarmconnect.SwarmUser;
-import com.swarmconnect.SwarmUser.GotUserCB;
 
-public class MessagesActivity extends SwarmActivity {
+public class MessagesActivity extends SwarmActivity implements Requester {
 
+	public static int GET_MESSAGES_REQUEST_ID = 1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,43 +28,25 @@ public class MessagesActivity extends SwarmActivity {
 	}
 
 	public void onGetMessages(View view) {
-				
-		SwarmMessageThread.getAllThreads(new GotThreadsCB() {
-			// boucle de lecture des messages
-			
-			@Override
-			public void gotThreads(List<SwarmMessageThread> threads) {
-				Toast.makeText(getApplicationContext(), ""+threads.size(), Toast.LENGTH_SHORT).show();
-				for (SwarmMessageThread swarmMessageThread : threads) {
-					swarmMessageThread.getMessages(new GotMessagesCB() {
-						
-						@Override
-						public void gotMessages(List<SwarmMessage> messages) {
-							
-							for (SwarmMessage message : messages) {
-								if (!message.from.username.equals(Swarm.user.username)) {
-									Toast.makeText(getApplicationContext(), message.message, Toast.LENGTH_SHORT).show();
-								}
-							}
-						}
-					});
-				}
-			}
-		});
+		String name = ((EditText)findViewById(R.id.editTextFromUser)).getText().toString();
+		((MyApplication)getApplicationContext()).getMessagesFromUser(name, this, GET_MESSAGES_REQUEST_ID);
+		
 	}
 	
 	public void onSendMessage(View view) {
 		String name = ((EditText)findViewById(R.id.editTextName)).getText().toString();
-		final String message = ((EditText)findViewById(R.id.editTextMessage)).getText().toString();
+		String message = ((EditText)findViewById(R.id.editTextMessage)).getText().toString();
 		
-		SwarmUser.getUser(name, new GotUserCB() {
-			
-			@Override
-			public void gotUser(SwarmUser user) {
-				if (user != null) {
-					SwarmMessage.sendMessage(user.userId, message, null);
-				}
+		((MyApplication)getApplicationContext()).sendMessage(message, name);
+	}
+
+	@Override
+	public void acceptAnswer(int requestID, Object answer) {
+		if (requestID == GET_MESSAGES_REQUEST_ID) {
+			List<String> messages = (List<String>)answer;
+			for (String message : messages) {
+				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 			}
-		});
+		}
 	}
 }
