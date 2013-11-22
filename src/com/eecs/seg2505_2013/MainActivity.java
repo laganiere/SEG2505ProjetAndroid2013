@@ -58,6 +58,8 @@ public class MainActivity extends SwarmActivity {
 	}
 	
 	public void onPoserQuestion(View view) {
+		Intent intent = new Intent(this, AskActivity.class);
+		startActivity(intent);
 	}
 	
 	public void onRepondreQuestion(View view) {
