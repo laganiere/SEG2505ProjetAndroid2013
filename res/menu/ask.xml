@@ -7,7 +7,7 @@
         android:title="@string/action_settings"/>
 
     <item android:id="@+id/action_home"
-          android:icon="@drawable/ic_launcher"
+          android:icon="@drawable/ic_menu_home"
           android:title="@+string/action_home"
           android:showAsAction="ifRoom"/>
     

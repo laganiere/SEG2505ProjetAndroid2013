@@ -10,12 +10,17 @@ public class Reponse implements Comparable<Reponse> {
 	private Utilisateur utilisateur;
 	private Question question;
 	
-	public Reponse(String text, Question question){
+	
+	public Reponse(Question question, Utilisateur utilisateur){
+		this.question = question;
+		this.utilisateur = utilisateur;
+	}
+	public Reponse(String text, Question question, Utilisateur utilisateur){
 		this.text = text;
 		this.question = question;
 	}
 	
-	public Reponse(String text, Date date, int qualite, Question question){
+	public Reponse(String text, Date date, int qualite, Question question, Utilisateur utilisateur){
 		this.text = text;
 		this.date = date;
 		this.qualite = qualite;
@@ -35,6 +40,21 @@ public class Reponse implements Comparable<Reponse> {
 	
 	public Date getDate(){
 		return date;
+	}
+	
+	/**
+	 * Sets this Response date to the current one
+	 */
+	public void setDate(){
+		this.date = new Date();
+	}
+	
+	/**
+	 * Set this response date to the provided one
+	 * @param date
+	 */
+	public void setDate(Date date){
+		this.date = date;
 	}
 	
 	public int getQualite(){
