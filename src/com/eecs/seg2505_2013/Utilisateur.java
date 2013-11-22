@@ -8,13 +8,13 @@ public class Utilisateur {
 	private String nom;
 	private int reputation;
 	private Domaine domaines[];
-	private Question questions[];
-	private Reponse reponses[];
+	/*private Question questions[];
+	private Reponse reponses[];*/
 	
 	public Utilisateur(){
 		domaines = new Domaine[10]; 
-		questions = new Question[10];
-		reponses = new Reponse[10];
+		/*questions = new Question[10];
+		reponses = new Reponse[10];*/
 	}
 	
 	public Utilisateur(String nom){
@@ -28,7 +28,7 @@ public class Utilisateur {
 	}
 	
 	//Access methods pour question
-	
+	/*
 	public void addQuestion(Question question){this.<Question>addElement(question); }
 	
 	public void addQuestion(String text, Date date,Question.State etat, Domaine domaine, Utilisateur utilisateur){this.addQuestion(new Question(text,date,etat,domaine,utilisateur)); }
@@ -42,9 +42,9 @@ public class Utilisateur {
 	public int getIndexOfQuestion(Question question){  return this.<Question>getIndexOf(question); }
 	
 	public void removeQuestion(Question question){ this.<Question>removeElement(question); }
-	
+	*/
 	//Access methods pour Reponse
-	
+	/*
 	public void addReponse(Reponse reponse){this.<Reponse>addElement(reponse); }
 	
 	public void addResponse(String text, Date date, int qualite, Question question){ this.addReponse(new Reponse(text,date,qualite,question)); }
@@ -58,7 +58,7 @@ public class Utilisateur {
 	public int getIndexOfReponse(Reponse reponse){ return this.<Reponse>getIndexOf(reponse); }
 	
 	public void removeReponse(Reponse reponse){ this.<Reponse>removeElement(reponse); }
-	
+	*/
 	//Access methods pour Domaine
 	
 	public void addDomaine(Domaine domaine){ this.<Domaine>addElement(domaine); }
