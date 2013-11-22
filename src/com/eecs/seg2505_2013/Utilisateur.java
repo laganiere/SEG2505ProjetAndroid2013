@@ -108,7 +108,7 @@ public class Utilisateur {
 		for(int i=1;i<domaines.length &&domaines[i] != null;i++){
 			ret += ", " + domaines[i].getNom();
 		}
-		ret += "\n"; 
+		/*ret += "\n"; 
 		ret = "Questions: ";
 		for(int i=1;i<questions.length &&questions[i] != null;i++){
 			ret += questions[i].getText() + "\n\n";
@@ -116,7 +116,7 @@ public class Utilisateur {
 		ret = "Reponse: ";
 		for(int i=1;i<reponses.length &&reponses[i] != null;i++){
 			ret += reponses[i].getText() + "\n\n";
-		}
+		}*/
 		
 		return ret;
 	}
@@ -127,11 +127,11 @@ public class Utilisateur {
 		Object[] array = null;
 		if(tst instanceof Domaine){
 			array = domaines;
-		}else if(tst  instanceof Question){
+		}/*else if(tst  instanceof Question){
 			array = questions;
 		}else if(tst instanceof Reponse){
 			array = reponses;
-		}
+		}*/
 		if(array != null){
 			Object[] temp = new Object[array.length*2];
 			for(int i =0;i<array.length;i++){
@@ -139,11 +139,11 @@ public class Utilisateur {
 			}
 			if(tst instanceof Domaine){
 				domaines = (Domaine[]) temp;
-			}else if(tst  instanceof Question){
+			}/*else if(tst  instanceof Question){
 				questions = (Question[]) temp;
 			}else if(tst instanceof Reponse){
 				array = (Reponse[]) reponses;
-			}
+			}*/
 			
 			temp = null;
 			return;
@@ -154,11 +154,11 @@ public class Utilisateur {
 		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
-		}else if(element  instanceof Question){
+		}/*else if(element  instanceof Question){
 			temp = questions;
 		}else if(element instanceof Reponse){
 			temp = reponses;
-		}
+		}*/
 		if(temp != null){
 			for(int i= this.<E>getIndexOf(element);i!=-1 && i<temp.length-1 && temp[i] !=null;i++){
 				temp[i]= temp[i+1];
@@ -172,11 +172,11 @@ public class Utilisateur {
 		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
-		}else if(element  instanceof Question){
+		}/*else if(element  instanceof Question){
 			temp = questions;
 		}else if(element instanceof Reponse){
 			temp = reponses;
-		}
+		}*/
 		if(temp !=null){
 			for(int i = 0;i<temp.length && temp[i] !=null;i++){
 				if(element.equals(temp[i])){
@@ -192,11 +192,11 @@ public class Utilisateur {
 		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
-		}else if(element instanceof Question){
+		}/*else if(element instanceof Question){
 			temp = questions;
 		}else if(element instanceof Reponse){
 			temp = reponses;
-		}
+		}*/
 		if(temp !=null){
 		for(int i=0;temp[i]!=null &&i<temp.length;i++){
 			if(element.equals(domaines[i])){
@@ -212,20 +212,20 @@ public class Utilisateur {
 		Object[] temp = null;
 		if(test instanceof Domaine){
 			temp = domaines;
-		}else if(test  instanceof Question){
+		}/*else if(test  instanceof Question){
 			temp = questions;
 		}else if(test instanceof Reponse){
 			temp = reponses;
-		}
+		}*/
 		if(temp != null){
 			if(index>0 && index< temp.length-1){
 				if(test instanceof Domaine){
 					return (E)(new Domaine(domaines[index].getNom()));
-				}else if(test instanceof Question){
+				}/*else if(test instanceof Question){
 					return (E)((Question)(temp[index])).deepCopy();
 				}else if(test instanceof Reponse){
 					return (E)((Question)(temp[index])).deepCopy();
-				}else{
+				}*/else{
 					return null;
 				}
 			}else{
@@ -241,11 +241,11 @@ public class Utilisateur {
 		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
-		}else if(element instanceof Question){
+		}/*else if(element instanceof Question){
 			temp = questions;
 		}else if(element instanceof Reponse){
 			temp = reponses;
-		}
+		}*/
 		if(temp !=null){
 			int i;
 			for(i=0;i<temp.length;i++){
@@ -267,17 +267,17 @@ public class Utilisateur {
 		Object[] temp = null;
 		if(test instanceof Domaine){
 			temp = domaines;
-		}else if(test instanceof Question){
+		}/*else if(test instanceof Question){
 			temp = questions;
 		}else if(test instanceof Reponse){
 			temp = reponses;
-		}
+		}*/
 		if(temp !=null){
 			if(test instanceof Domaine){
 				for(int i=0;domaines[i]!=null &&i<domaines.length;i++){
 					temp[i] = (E)new Domaine(domaines[i].getNom());
 				}
-			}else if(test instanceof Question){
+			}/*else if(test instanceof Question){
 				for(int i=0;temp[i]!=null &&i<temp.length;i++){
 					temp[i] = (E)(((Question)(temp[i])).deepCopy());
 				}
@@ -285,7 +285,7 @@ public class Utilisateur {
 				for(int i=0;temp[i]!=null &&i<temp.length;i++){
 					temp[i] = (E)(((Reponse)(temp[i])).deepCopy());
 				}
-			}
+			}*/
 			
 			return (E[])temp;
 		}
