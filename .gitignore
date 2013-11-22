@@ -213,3 +213,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+gen/com/swarmconnect/R.java
+
+gen/com/eecs/seg2505_2013/BuildConfig.java
+
+gen/com/eecs/seg2505_2013/R.java
