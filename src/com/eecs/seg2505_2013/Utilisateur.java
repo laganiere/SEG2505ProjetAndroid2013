@@ -1,5 +1,7 @@
 package com.eecs.seg2505_2013;
 
+import java.util.Date;
+
 //Needs moar question and reponse
 
 public class Utilisateur {
@@ -29,7 +31,7 @@ public class Utilisateur {
 	
 	public void addQuestion(Question question){this.<Question>addElement(question); }
 	
-	public void addQuestion(String text, String date,Enum etat){this.addQuestion(new Question(text,date,etat)); }
+	public void addQuestion(String text, Date date,Question.State etat, Domaine domaine, Utilisateur utilisateur){this.addQuestion(new Question(text,date,etat,domaine,utilisateur)); }
 	
 	public Question[] getQuestions(){ return this.<Question>getElements(); }
 	
@@ -45,7 +47,7 @@ public class Utilisateur {
 	
 	public void addReponse(Reponse reponse){this.<Reponse>addReponse(reponse); }
 	
-	public void addResponse(String text, String date, String qualite){ this.addReponse(new Response(text,date,qualite)); }
+	public void addResponse(String text, Date date, int qualite, Question question){ this.addReponse(new Reponse(text,date,qualite,question)); }
 	
 	public Reponse[] getReponses(){ return this.<Reponse>getElements(); }
 	
