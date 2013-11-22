@@ -13,6 +13,8 @@ import com.swarmconnect.SwarmActivity;
 public class MessagesActivity extends SwarmActivity implements Requester {
 
 	public static int GET_MESSAGES_REQUEST_ID = 1;
+	private int requestID;
+	private Object answer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +43,21 @@ public class MessagesActivity extends SwarmActivity implements Requester {
 	}
 
 	@Override
-	public void acceptAnswer(int requestID, Object answer) {
-		if (requestID == GET_MESSAGES_REQUEST_ID) {
-			List<String> messages = (List<String>)answer;
-			for (String message : messages) {
-				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-			}
-		}
+	public void acceptAnswer(int currentRequestID, Object currentAnswer) {
+		
+		requestID= currentRequestID;
+		answer= currentAnswer;
+		
+		runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+        		if (requestID == GET_MESSAGES_REQUEST_ID) {
+        			List<String> messages = (List<String>)answer;
+        			for (String message : messages) {
+        				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        			}
+        		}
+            }
+        });
 	}
 }
