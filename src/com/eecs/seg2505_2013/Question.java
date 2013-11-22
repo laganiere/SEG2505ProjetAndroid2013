@@ -5,10 +5,10 @@ import java.util.Date;
 public class Question implements Comparable<Question> {
 
 	public enum State {
-		NEW,	//When just created
-		ASKED, 	//When set to the server
+		NEW,		//When just created
+		ASKED, 		//When sent to the server
 		ANSWERED, 	//Has an answer
-		RATED;	//User has rated answer
+		RATED;		//User has rated answer
 	}
 
 	private String text;
@@ -18,6 +18,11 @@ public class Question implements Comparable<Question> {
 	private Reponse reponse;
 	private Utilisateur utilisateur;
 
+	public Question(Utilisateur utilisateur){
+		this.utilisateur = utilisateur;
+		etat = State.NEW;
+	}
+	
 	/**
 	 * Creates a new Question with the provided text.
 	 * Uses the current time and sets the State to "new"
@@ -68,6 +73,21 @@ public class Question implements Comparable<Question> {
 	
 	public Date getDate(){
 		return date;
+	}
+	
+	/**
+	 * Sets this Response date to the current one
+	 */
+	public void setDate(){
+		this.date = new Date();
+	}
+	
+	/**
+	 * Set this response date to the provided one
+	 * @param date
+	 */
+	public void setDate(Date date){
+		this.date = date;
 	}
 	
 	public Reponse getReponse(){
