@@ -33,9 +33,9 @@ public class Utilisateur {
 	
 	public void addQuestion(String text, Date date,Question.State etat, Domaine domaine, Utilisateur utilisateur){this.addQuestion(new Question(text,date,etat,domaine,utilisateur)); }
 	
-	public Question[] getQuestions(){ return this.<Question>getElements(); }
+	public Question[] getQuestions(){ return this.<Question>getElements(new Question(null, null, null, null, null)); }
 	
-	public Question getQuestion(){ return this.<Question>getElement(); }
+	public Question getQuestion(int index) throws IllegalArgumentException{ return this.<Question>getElement(index, new Question(null,null,null,null,null)); }
 	
 	public boolean hasQuestion(Question question){ return this.<Question>hasElement(question); }
 	
@@ -45,13 +45,13 @@ public class Utilisateur {
 	
 	//Access methods pour Reponse
 	
-	public void addReponse(Reponse reponse){this.<Reponse>addReponse(reponse); }
+	public void addReponse(Reponse reponse){this.<Reponse>addElement(reponse); }
 	
 	public void addResponse(String text, Date date, int qualite, Question question){ this.addReponse(new Reponse(text,date,qualite,question)); }
 	
-	public Reponse[] getReponses(){ return this.<Reponse>getElements(); }
+	public Reponse[] getReponses(){ return this.<Reponse>getElements(new Reponse(null)); }
 	
-	public Reponse getResponse(int index) throws IllegalArgumentException { return this.<Reponse>getElement(index); }
+	public Reponse getResponse(int index) throws IllegalArgumentException { return this.<Reponse>getElement(index, new Reponse(null)); }
 	
 	public boolean hasReponse(Reponse reponse){ return this.<Reponse>hasElement(reponse); }
 	
@@ -66,7 +66,7 @@ public class Utilisateur {
 	public void addDomaine(String nom){this.addDomaine(new Domaine(nom)); }
 	
 	public String[] getDomaines(){
-		Domaine[] temp = this.<Domaine>getElements();
+		Domaine[] temp = this.<Domaine>getElements(new Domaine(null));
 		String[] ret = new String[temp.length];
 		for(int i=0;i<temp.length && temp[i] != null;i++){
 			ret[i] = temp[i].getNom();
@@ -74,7 +74,7 @@ public class Utilisateur {
 		return ret;
 	}
 	
-	public String getDomaineName(int index) throws IllegalArgumentException { return this.<Domaine>getElement(index).getNom(); }
+	public String getDomaineName(int index) throws IllegalArgumentException { return this.<Domaine>getElement(index,new Domaine(null)).getNom(); }
 	
 	public boolean hasDomaine(Domaine domaine){ return this.<Domaine>hasElement(domaine); }
 	
@@ -123,9 +123,8 @@ public class Utilisateur {
 	
 	//Private Generic Methods
 	
-	private <E> void makeBiggerArray(){
-		E tst;
-		Object[] array;
+	private <E> void makeBiggerArray(E tst){
+		Object[] array = null;
 		if(tst instanceof Domaine){
 			array = domaines;
 		}else if(tst  instanceof Question){
@@ -152,7 +151,7 @@ public class Utilisateur {
 	}
 	
 	private <E> void removeElement(E element){
-		Object[] temp;
+		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
 		}else if(element  instanceof Question){
@@ -170,7 +169,7 @@ public class Utilisateur {
 	}
 	
 	private <E> int getIndexOf(E element){
-		Object[] temp;
+		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
 		}else if(element  instanceof Question){
@@ -190,12 +189,12 @@ public class Utilisateur {
 	}
 	
 	private <E> boolean hasElement(E element){
-		Object[] temp;
+		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
 		}else if(element instanceof Question){
 			temp = questions;
-		}else if(test instanceof Reponse){
+		}else if(element instanceof Reponse){
 			temp = reponses;
 		}
 		if(temp !=null){
@@ -209,9 +208,8 @@ public class Utilisateur {
 		return false;
 	}
 	
-	private <E> E getElement(int index){
-		E test;
-		Object[] temp;
+	private <E> E getElement(int index,E test){
+		Object[] temp = null;
 		if(test instanceof Domaine){
 			temp = domaines;
 		}else if(test  instanceof Question){
@@ -223,17 +221,24 @@ public class Utilisateur {
 			if(index>0 && index< temp.length-1){
 				if(test instanceof Domaine){
 					return (E)(new Domaine(domaines[index].getNom()));
+				}else if(test instanceof Question){
+					return (E)((Question)(temp[index])).deepCopy();
+				}else if(test instanceof Reponse){
+					return (E)((Question)(temp[index])).deepCopy();
 				}else{
-					return (E)temp[index].deepCopy();
+					return null;
 				}
 			}else{
 				throw new IllegalArgumentException();
 			}
+		}else{
+			return null;
 		}
+		
 	}
 	
 	private <E>void addElement(E element){
-		Object[] temp;
+		Object[] temp = null;
 		if(element instanceof Domaine){
 			temp = domaines;
 		}else if(element instanceof Question){
@@ -251,16 +256,15 @@ public class Utilisateur {
 			}
 			
 			if(i == temp.length){
-				this.<E>makeBiggerArray();
+				this.<E>makeBiggerArray(element);
 				temp[i] = element;
 			}
 			return;
 		}
 	}
 	
-	private <E> E[] getElements(){
-		E test;
-		Object[] temp;
+	private <E> E[] getElements(E test){
+		Object[] temp = null;
 		if(test instanceof Domaine){
 			temp = domaines;
 		}else if(test instanceof Question){
@@ -273,14 +277,19 @@ public class Utilisateur {
 				for(int i=0;domaines[i]!=null &&i<domaines.length;i++){
 					temp[i] = (E)new Domaine(domaines[i].getNom());
 				}
-			}else{
+			}else if(test instanceof Question){
 				for(int i=0;temp[i]!=null &&i<temp.length;i++){
-					temp[i] = (E)temp[i].deepCopy();
+					temp[i] = (E)(((Question)(temp[i])).deepCopy());
+				}
+			} else if(test instanceof Reponse){
+				for(int i=0;temp[i]!=null &&i<temp.length;i++){
+					temp[i] = (E)(((Reponse)(temp[i])).deepCopy());
 				}
 			}
 			
 			return (E[])temp;
 		}
+		return null;
 	}
 	
 }
