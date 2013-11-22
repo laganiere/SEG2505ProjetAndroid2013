@@ -34,6 +34,7 @@
             android:name="com.eecs.seg2505_2013.MessagesActivity"
             android:label="@string/title_activity_messages" >
         </activity>
+        <activity android:name="com.eecs.seg2505_2013.AskActivity" android:label="AskActivity"></activity>
     </application>
 
 </manifest>
