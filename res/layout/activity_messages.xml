@@ -34,6 +34,13 @@
         android:layout_height="wrap_content"
         android:onClick="onGetMessages"
         android:text="Get Messages" />
+    
+    <Button
+        android:id="@+id/buttonGetQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onGetQuestions"
+        android:text="Get Questions" />
 
     <TextView
         android:id="@+id/TextView02"
@@ -75,5 +82,12 @@
         android:layout_height="wrap_content"
         android:onClick="onSendMessage"
         android:text="Send Message" />
+    
+    <Button
+        android:id="@+id/buttonSendQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSendQuestion"
+        android:text="Send Question" />
 
 </LinearLayout>

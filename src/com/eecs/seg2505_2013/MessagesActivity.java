@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
+import com.swarmconnect.SwarmUser;
 
 public class MessagesActivity extends SwarmActivity implements Requester {
 
 	public static int GET_MESSAGES_REQUEST_ID = 1;
-	private int requestID;
-	private Object answer;
+	public static int GET_QUESTIONS_REQUEST_ID = 2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +42,37 @@ public class MessagesActivity extends SwarmActivity implements Requester {
 		
 		((MyApplication)getApplicationContext()).sendMessage(message, name);
 	}
+	
+	public void onGetQuestions(View view) {
+		((MyApplication)getApplicationContext()).getQuestionMessages(this, GET_QUESTIONS_REQUEST_ID);
+	}
+	
+	public void onSendQuestion(View view) {
+		String name = ((EditText)findViewById(R.id.editTextName)).getText().toString();
+		String message = ((EditText)findViewById(R.id.editTextMessage)).getText().toString();
+		
+		Question q = new Question(new Utilisateur(Swarm.user.username));
+		q.setTexte(message);
+		String randomDomaine = ((MyApplication)getApplicationContext()).getSuperDomaines().get(0);
+		q.setDomaine(new Domaine(randomDomaine));
+		((MyApplication)getApplicationContext()).sendQuestion(q);
+	}
 
 	@Override
-	public void acceptAnswer(int currentRequestID, Object currentAnswer) {
-		
-		requestID= currentRequestID;
-		answer= currentAnswer;
+	public void acceptAnswer(final int currentRequestID, final Object currentAnswer) {
 		
 		runOnUiThread(new Runnable() {
             @Override
             public void run() {
-        		if (requestID == GET_MESSAGES_REQUEST_ID) {
-        			List<String> messages = (List<String>)answer;
+        		if (currentRequestID == GET_MESSAGES_REQUEST_ID) {
+        			List<String> messages = (List<String>)currentAnswer;
         			for (String message : messages) {
         				Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        			}
+        		} else if (currentRequestID == GET_QUESTIONS_REQUEST_ID) {
+        			List<Question> questions = (List<Question>)currentAnswer;
+        			for (Question question : questions) {
+        				Toast.makeText(getApplicationContext(), question.getTexte(), Toast.LENGTH_SHORT).show();
         			}
         		}
             }

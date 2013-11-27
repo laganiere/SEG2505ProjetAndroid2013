@@ -2,12 +2,12 @@ package com.eecs.seg2505_2013;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.os.Bundle;
-
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmMessage;
 import com.swarmconnect.SwarmMessageThread;
 import com.swarmconnect.SwarmMessageThread.GotMessagesCB;
@@ -17,8 +17,12 @@ import com.swarmconnect.SwarmUser.GotUserCB;
 
 public class MyApplication extends android.app.Application {
 	
+	public static String QUESTION_PREFIX = "Q:";
+	public static String QUESTION_SEPARATOR = ":";
+	
 	List<String> superDomaines;
 	Map<String, List<String>> sousDomaines;
+	Map<String, List<String>> experts;
 	
 	@Override
 	public void onCreate() {
@@ -26,15 +30,49 @@ public class MyApplication extends android.app.Application {
 		
 		superDomaines= Arrays.asList(getResources().getStringArray(R.array.super_categories));
 		createSousDomaines();
+		experts = new HashMap<String, List<String>>();
 	}
 	
 	// envoie d'une question
-	public void sendQuestion(/* Question q*/) {
-
-		// chercher un expert et creer le message
-		sendMessage("Q: Quelle heure est-il?","swarm@laganiere.name");
+	public void sendQuestion(Question q) {
+		if (q != null) {
+			Domaine domaine = q.getDomaine();
+			if (domaine != null) {
+				// chercher un expert
+				List x = getExperts(domaine.getNom());
+				if (x != null
+						&& x.size() > 0) {
+					String expert = (String)x.get(0);
+					String questionPhrase = q.getTexte();
+					if (questionPhrase != null) {
+						sendMessage("Q:" + domaine.getNom() + ":" + questionPhrase, expert);
+					}
+				}
+			}
+		}
 	}
 		
+	// obtention automatique d'un expert en donnant le domaine d'expertise
+	// retourne une liste d'expert qui peut etre vide s'il n y a pas d'experts correspondant
+	private List<String> getExperts(String domaine) {
+		if (this.experts.get(domaine) != null) {
+			return this.experts.get(domaine);
+		}
+		
+		List<String> experts_liste = new ArrayList<String>();
+		int id = getResources().getIdentifier(domaine, "array", getPackageName());
+		if (id != 0) {
+			String[] experts = getResources().getStringArray(id);
+			if (experts != null) {
+				List<String> result = Arrays.asList(experts);
+				experts_liste.addAll(result);
+				this.experts.put(domaine, result);
+			}
+		}
+		
+		return experts_liste;
+	}
+
 	// obtention de la liste des categories
 	public List<String> getSuperDomaines() {
         return superDomaines;
@@ -91,13 +129,18 @@ public class MyApplication extends android.app.Application {
 						swarmMessageThread.getMessages(new GotMessagesCB() {
 							@Override
 							public void gotMessages(List<SwarmMessage> messages) {
-								final ArrayList<String> messageList = new ArrayList<String>();
+								final ArrayList<Question> questionsList = new ArrayList<Question>();
 								for (SwarmMessage message : messages) {
-									if (message.message.startsWith("Q:")) {
-										// create question
+									// on s'assure que la question n'est pas la notre
+									if (!message.from.username.equals(Swarm.user.username)) {
+										if (message.message.startsWith(QUESTION_PREFIX)) {
+											// create question
+											Question q = parseQuestion(message.message, message.from.username);
+											questionsList.add(q);
+										}
 									}
 								}
-								requester.acceptAnswer(requestID, "question ici");
+								requester.acceptAnswer(requestID, questionsList);
 							}
 						});
 				}
@@ -123,5 +166,17 @@ public class MyApplication extends android.app.Application {
         	}
 		}
     }
-
+    
+    // Cree une question a partir d'une chaine de charactere formattee pour ce but la
+    public Question parseQuestion(String question, String username) {
+    	Question q = new Question(new Utilisateur(username));
+		String domaineAndTexte = question.substring(QUESTION_PREFIX.length());
+		int index = domaineAndTexte.indexOf(QUESTION_SEPARATOR);
+		String domaine = domaineAndTexte.substring(0, index);
+		String texte = domaineAndTexte.substring(index+1);
+		
+		q.setDomaine(new Domaine(domaine));
+		q.setTexte(texte);
+    	return q;
+    }
 }
