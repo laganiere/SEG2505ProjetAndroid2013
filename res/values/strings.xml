@@ -18,7 +18,7 @@
     </string-array>
     <string-array name="sous_categories_1">
         <item>informatique</item>
-        <item>audio-video</item>
+        <item>audiovideo</item>
         <item>telephonie</item>
     </string-array>
     <string-array name="sous_categories_2">
@@ -35,5 +35,42 @@
     <string name="label_liste_categorie">Voila la liste des categories</string>
     <string name="button_showSwarm">Show Swarm</string>
     <string name="title_activity_messages">MessagesActivity</string>
-
+    
+    <string-array name="Technologies">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="Loisirs">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="Langues">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="informatique">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="audiovideo">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="telephonie">
+       <item>seg2505</item>
+    </string-array>
+	 <string-array name="vins">
+       <item>seg2505</item>
+    </string-array>
+     <string-array name="echecs">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="soccer">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="anglais">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="francais">
+       <item>seg2505</item>
+    </string-array>
+    <string-array name="espagnol">
+       <item>seg2505</item>
+    </string-array>
+    
 </resources>
