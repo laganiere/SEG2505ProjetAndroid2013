@@ -10,7 +10,17 @@
     <string name="button_AjouterCategorie">Ajouter une categorie</string>
     <string name="button_listeCategorie">Liste des categories</string>
     <string name="title_activity_liste_categories">ListeCategoriesActivity</string>
-
+    <string name="tvTitreLectureReponse"><u>Lecture et évaluation de la réponse:</u></string>
+    <string name="tvLectureQuestion">Question:</string>
+    <string name="tvLectureReponse">Réponse:</string>
+    <string name="tvLectureLaQuestion">Quel vin serait-il approprié avec une salade de fruit?</string>
+    <string name="tvLectureLaReponse">Le vin à prendre Le vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendre Le vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendre</string>
+    <string name="tvLectureExpert">Expert : </string>
+    <string name="tvLectureNomExpert">Robert Laganière</string>
+    <string name="btnEvaluer">Évaluer</string>
+    <string name="tvEvaluation"><i>Qualité de la réponse : </i></string>
+    <string name="tvCommentaire">Commentaire : </string>
+	
     <string-array name="super_categories">
         <item>Super Categorie 1</item>
         <item>Super Categorie 2</item>

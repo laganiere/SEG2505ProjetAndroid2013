@@ -1,0 +1,121 @@
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="vertical"
+    tools:context=".LectureReponse" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitreLectureReponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvTitreLectureReponse"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+        <TextView
+            android:id="@+id/tvLectureQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="31dp"
+            android:text="@string/tvLectureQuestion" />
+
+        <TextView
+            android:id="@+id/tvLectureLaQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="31dp"
+            android:maxHeight="130dp"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:text="@string/tvLectureLaQuestion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_weight="0.00" >
+
+        <TextView
+            android:id="@+id/tvLectureReponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="@string/tvLectureReponse" />
+	
+        <TextView
+            android:id="@+id/tvLectureLaReponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:maxHeight="160dp"
+            android:maxLines="8"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            android:text="@string/tvLectureLaReponse"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.00"
+        android:gravity="right" >
+
+        <TextView
+            android:id="@+id/tvLectureExpert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/tvLectureExpert" />
+
+        <TextView
+            android:id="@+id/tvLectureNomExpert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="5dp"
+            android:text="@string/tvLectureNomExpert" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="bottom" >
+
+        <Button
+            android:id="@+id/btnEvaluer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:onClick="btnEvaluationOnClick"
+            android:text="@string/btnEvaluer" />
+
+    </FrameLayout>
+
+</LinearLayout>
