@@ -20,7 +20,14 @@
     <string name="btnEvaluer">Évaluer</string>
     <string name="tvEvaluation"><i>Qualité de la réponse : </i></string>
     <string name="tvCommentaire">Commentaire : </string>
-	
+	<string name="tvQuestion">Question:</string>
+    <string name="cbPertinente">-Question non pertinente au domaine d\'expertise</string>
+    <string name="cbDifficile">-Question trop difficile</string>
+    <string name="cbIncomplet">-Question incomplète</string>
+    <string name="cbOccup">-Je suis trop occupé pour répondre</string>
+    <string name="tvReponse">Réponse:</string>
+    <string name="tfRefuser">Refuser</string>
+    <string name="tfSend">Envoyer</string>
     <string-array name="super_categories">
         <item>Super Categorie 1</item>
         <item>Super Categorie 2</item>

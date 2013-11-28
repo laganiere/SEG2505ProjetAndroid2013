@@ -14,9 +14,10 @@ import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import com.swarmconnect.Swarm;
+import com.swarmconnect.SwarmActivity;
 
-
-public class LectureReponse extends Activity {
+public class LectureReponse extends SwarmActivity {
 
 	
 	@Override

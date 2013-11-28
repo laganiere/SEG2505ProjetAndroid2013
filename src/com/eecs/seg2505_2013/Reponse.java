@@ -6,28 +6,50 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
+import com.swarmconnect.Swarm;
+import com.swarmconnect.SwarmActivity;
 
 
-public class Reponse extends Activity {
+public class Reponse extends SwarmActivity {
 
+	EditText txtReponse;
+	TextView tvRefus;
+	AlertDialog levelDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reponse);
 		TextView tvQuestion = (TextView) findViewById(R.id.textViewQuestion);
-		TextView tvAnswer = (TextView) findViewById(R.id.tvAnswer);
 		tvQuestion.setMovementMethod(new ScrollingMovementMethod());
-		tvAnswer.setMovementMethod(new ScrollingMovementMethod());		
+		txtReponse = (EditText) findViewById(R.id.etReponse);
+		tvRefus = (TextView) findViewById(R.id.tvRefus);
+		tvRefus.setText("");
 
 		
+	}
+	
+	public void envoyerReponseOnClick(View view){
+
+		if(!tvRefus.getText().toString().matches("")){
+			Toast.makeText(Reponse.this, "Votre refus a été envoyée.", Toast.LENGTH_SHORT).show();
+		}
+		else if (tvRefus.getText().toString().matches("")) {
+			if(txtReponse.getText().toString().matches("")){
+				Toast.makeText(Reponse.this, "Vous devez saisir une réponse.", Toast.LENGTH_SHORT).show();
+			}
+			else{
+				Toast.makeText(Reponse.this, "Votre réponse a été envoyée.", Toast.LENGTH_SHORT).show();
+			}
+		}
+	
 	}
 	
 	public void envoyerRefusOnClick(View view){
@@ -36,31 +58,45 @@ public class Reponse extends Activity {
 	
 	private void showPopUp() {
 
-		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-		 helpBuilder.setTitle("Évaluation de la réponse");
-		 
-		 LayoutInflater inflater = getLayoutInflater();
-		 View evalLayout = inflater.inflate(R.layout.popuplayout, null);
-		 final RatingBar rbQualite = (RatingBar)evalLayout.findViewById(R.id.rbQualite);
-		 helpBuilder.setView(evalLayout);
-		 
-		 helpBuilder.setPositiveButton("Envoyer l'évalutation",
-		   new DialogInterface.OnClickListener() {
-
-		    public void onClick(DialogInterface dialog, int which) {
-		    	sendRating(rbQualite.getRating());
-		    }
-		   });
-		 helpBuilder.setNegativeButton("Annuler",
-				   new DialogInterface.OnClickListener() {
-
-				    public void onClick(DialogInterface dialog, int which) {
-				    	
-				    }
-				   });
-		 // Remember, create doesn't show the dialog
-		 AlertDialog helpDialog = helpBuilder.create();
-		 helpDialog.show();
+	
+		// Strings to Show In Dialog with Radio Buttons
+		final CharSequence[] items = {" Question trop difficile "," Question Non Pertinente "," Question Incomplète "," Trop Occupé "};
+		            
+		                // Creating and Building the Dialog 
+		                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		                builder.setTitle("Choisir la raison du refus:");
+		                builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+		                public void onClick(DialogInterface dialog, int item) {
+		                   
+		                    
+		                    switch(item)
+		                    {
+		                        case 0:
+		                                // Your code when first option seletced
+		                        	    tvRefus.setText("Refus: Question Trop difficile");
+		                               	break;
+		                        case 1:
+		                                // Your code when 2nd  option seletced
+		                                tvRefus.setText("Refus: Question Non Pertinente");
+		                                break;
+		                        case 2:
+		                               // Your code when 3rd option seletced
+		                        		tvRefus.setText("Refus: Incomplète");
+		                                break;
+		                        case 3:
+		                                 // Your code when 4th  option seletced        
+		                        		tvRefus.setText("Refus: Trop Occupé");
+		                                break;
+		                        
+		                    }
+		                    txtReponse.setText("");
+		                    txtReponse.setBackgroundResource(android.R.color.darker_gray);
+		                    txtReponse.setEnabled(false);
+		                    levelDialog.dismiss();    
+		                    }
+		                });
+		                levelDialog = builder.create();
+		                levelDialog.show();
 	}
 
 	
@@ -71,9 +107,10 @@ public class Reponse extends Activity {
 		return true;
 	}
 	
-	public void sendRating(float rating){
+	public String getQuestion(){
 		
-		Toast.makeText(Reponse.this, "L'évaluation de "+rating+" étoiles a été envoyé!", Toast.LENGTH_SHORT).show();
+		//question = ...;
+		return "Ceci est une question";
 		
 	}
 
