@@ -61,9 +61,14 @@ public class MainActivity extends SwarmActivity {
 	}
 	
 	public void onRepondreQuestion(View view) {
+		Intent intent = new Intent(this, ReponseActivity.class);
+		startActivity(intent);
+		
 	}
 	
 	public void OnLireEvaluerReponse(View view) {
+		Intent intent = new Intent(this, EvaluationActivity.class);
+		startActivity(intent);
 	}
 	
 	public void onAjouterCategorie(View view) {

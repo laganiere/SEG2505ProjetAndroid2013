@@ -1,84 +1,64 @@
 package com.eecs.seg2505_2013;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: Julien Mageau, Nicholas Horton, Nicholas Seguin, Catherine Maathuis
+ * Date: 21/11/13
+ * Time: 7:55 PM
+ */
 public class Domaine implements Comparable<Domaine> {
-	
-	private String nom;
-	private Domaine superDomaine;
-	private List<Domaine> sousdomaines;
+    private String nom;
+    private List<Domaine> sousDomaines;
 
-	public Domaine(String nom, Domaine superDomaine)
-	{
-		this.nom = nom;
-		this.superDomaine = superDomaine;
-		this.sousdomaines = null;
-		superDomaine.getSousDomaine().add(this);
-	}
+    /**
+     * Un domaine ou sous-domaine pour catégoriser les questions
+     *
+     * @param nom Le nom du domaine
+     */
+    public Domaine(String nom) {
+        this.nom = nom;
+        sousDomaines = new ArrayList<Domaine>();
+    }
 
-	public Domaine(String nom)
-	{
+    /**
+     * Ajouter un sous domaine à un super-domaine
+     *
+     * @param d Le domaine à ajouter
+     */
+    public void ajouterSousDomaine(Domaine d) {
+        this.sousDomaines.add(d);
+        Collections.sort(sousDomaines);
+    }
 
-		this.nom = nom;
-		this.superDomaine = null;
-		this.sousdomaines = new ArrayList<Domaine>(3);
-	}
+    /**
+     * Retirer un sous domaine d'un super-domaine
+     *
+     * @param d Le domaine à enlever
+     */
+    public void removeSousDomaine(Domaine d) {
+        sousDomaines.remove(d);
+    }
 
-	public boolean addSousDomaine(String nom)
-	{
-		sousdomaines.add(new Domaine(nom, this));
-		return true;
-	}
-	
-	public boolean addSousDomaine(Domaine sousDomaineToAdd) {
-		sousdomaines.add(sousDomaineToAdd);
-		return true;
-	}
-		
-	public Domaine getSuperDomaine(){
+    public String getNom() {
+        return nom;
+    }
 
-		return superDomaine;
-	}
-	
-	public String getNom(){
+    public List<Domaine> getSousDomaines() {
+        return sousDomaines;
+    }
 
-		return nom;
-	}
-	
-	public boolean setNom(String nom){
-		
-		this.nom = nom;	
-		return true;
-	}
-		
-	public boolean remove(Domaine domaine){
-
-		return sousdomaines.remove(domaine);
-	}
-
-	public String toString() {
-		if(isSousDomaine()) {
-			return this.superDomaine.getNom() + " :\n" + nom;
-		} else {
-			return nom;
-		}
-	}
-
-	public List<Domaine> getSousDomaine()
-	{
-		return sousdomaines;
-	}
-
-	public boolean equals(Object o){
-
-		return toString().equals(o.toString());
-	}
-	
-	public boolean isSousDomaine() {
-		return superDomaine != null;
-	}
-
-	public int compareTo(Domaine other) {
-		return toString().compareTo(other.toString());
-	}
+    /**
+     * Utilise pour arranger les domaines en ordre alphabetique
+     *
+     * @param d
+     * @return
+     */
+    @Override
+    public int compareTo(Domaine d) {
+        return this.nom.compareTo(d.nom);
+    }
 }

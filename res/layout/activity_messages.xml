@@ -10,12 +10,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MessagesActivity" >
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get messages from user:" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/editTextFromUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonGetMessages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onGetMessages"
         android:text="Get Messages" />
+    
+    <Button
+        android:id="@+id/buttonGetQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onGetQuestions"
+        android:text="Get Questions" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send messages to user:" />
 
     <TextView
         android:id="@+id/textView1"
@@ -51,5 +82,12 @@
         android:layout_height="wrap_content"
         android:onClick="onSendMessage"
         android:text="Send Message" />
+    
+    <Button
+        android:id="@+id/buttonSendQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSendQuestion"
+        android:text="Send Question" />
 
 </LinearLayout>

@@ -18,7 +18,7 @@ import com.swarmconnect.SwarmActivity;
 public class ListeCategoriesActivity extends SwarmActivity {
 	
 	List<String> groupList;
-    Map<String, List<String>> sousDomaines;
+    Map<String, List<String>> sousDomaines; // sous-domaine
     ExpandableListView liste_categories;
     
 	@Override
@@ -26,8 +26,8 @@ public class ListeCategoriesActivity extends SwarmActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_liste_categories);
 		
-		createSuperDomaines();
-	    createSousDomaines();
+		groupList= ((MyApplication)getApplicationContext()).getSuperDomaines();
+		sousDomaines= ((MyApplication)getApplicationContext()).getSousDomaines();
 
 		liste_categories = (ExpandableListView)findViewById(R.id.expandableListViewCategorie);
 		
@@ -58,28 +58,6 @@ public class ListeCategoriesActivity extends SwarmActivity {
 		getMenuInflater().inflate(R.menu.liste_categories, menu);
 		return true;
 	}
-
-	private void createSuperDomaines() {
-        groupList = Arrays.asList(getResources().getStringArray(R.array.super_categories));
-    }
- 
-    private void createSousDomaines() {
-        String[] sousCat1 = getResources().getStringArray(R.array.sous_categories_1);
-        String[] sousCat2 = getResources().getStringArray(R.array.sous_categories_2);
-        String[] sousCat3 = getResources().getStringArray(R.array.sous_categories_3);
- 
-        sousDomaines = new LinkedHashMap<String, List<String>>();
-        
-        for (String string : groupList) {
-        	if (string.equals(groupList.get(0))) {
-        		sousDomaines.put(string, Arrays.asList(sousCat1));
-        	} else if (string.equals(groupList.get(1))) {
-        		sousDomaines.put(string, Arrays.asList(sousCat2));
-        	} else if (string.equals(groupList.get(2))) {
-        		sousDomaines.put(string, Arrays.asList(sousCat3));
-        	}
-		}
-    }
     
     private void setGroupIndicatorToRight() {
         /* Get the screen width */
