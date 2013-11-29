@@ -1,20 +1,25 @@
 package com.eecs.seg2505_2013;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
 
 public class AskActivity extends SwarmActivity {
@@ -77,6 +82,12 @@ public class AskActivity extends SwarmActivity {
 	  } 
 	
 	public void onSubmit(View view) {
-		Toast.makeText(this, "Submit clicked", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "Submited", Toast.LENGTH_SHORT).show();
+		Question question = new Question(new Utilisateur(Swarm.user.username));
+		EditText text  = (EditText)findViewById(R.layout.activity_ask);
+		question.setTexte(text.getText().toString());
+		question.setDate(new Date());
+		question.setDomaine(new Domaine(subDomainSpinner.getItemAtPosition(subDomainSpinner.getSelectedItemPosition()).toString()));
+		((MyApplication)getApplicationContext()).sendQuestion(question);
 	}
 }
