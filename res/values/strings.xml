@@ -72,5 +72,6 @@
     <string-array name="espagnol">
        <item>seg2505</item>
     </string-array>
+    <string name="choose_domain">Choisir le domaine</string>
     
 </resources>

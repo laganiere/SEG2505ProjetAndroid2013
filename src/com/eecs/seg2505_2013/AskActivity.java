@@ -1,21 +1,56 @@
 package com.eecs.seg2505_2013;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.swarmconnect.SwarmActivity;
 
 public class AskActivity extends SwarmActivity {
 	
+	Map<String, List<String>> sousDomaines; // sous-domaine
+	
+	Spinner domainSpinner;
+	Spinner subDomainSpinner;
+	ArrayAdapter<String> subDomainAdapter;
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ask);
+		sousDomaines= ((MyApplication)getApplicationContext()).getSousDomaines();
+		domainSpinner = (Spinner) findViewById(R.id.spinner1);
+		subDomainSpinner  = (Spinner) findViewById(R.id.spinner2);
+		domainSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
+			@Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int pos, long id) {
+				Toast.makeText(parentView.getContext(), "Selected domain " +
+				          parentView.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+				subDomainAdapter = new ArrayAdapter<String>(selectedItemView.getContext(), android.R.layout.simple_spinner_item, sousDomaines.get(parentView.getItemAtPosition(pos)));
+				        
+				// Specify the layout to use when the list of choices appears
+				subDomainAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				// Apply the adapter to the spinner
+				subDomainSpinner.setAdapter(subDomainAdapter);
+		    }
+
+			@Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		        // would that even happen?
+		    }
+		});
 	}
 
 	@Override
