@@ -130,6 +130,7 @@ public class MyApplication extends android.app.Application {
 						swarmMessageThread.getMessages(new GotMessagesCB() {
 							@Override
 							public void gotMessages(List<SwarmMessage> messages) {
+								final ArrayList<Question> questionsList = new ArrayList<Question>();
 								for (SwarmMessage message : messages) {
 									// on s'assure que la question n'est pas la notre
 									if (!message.from.username.equals(Swarm.user.username)) {
@@ -140,6 +141,7 @@ public class MyApplication extends android.app.Application {
 										}
 									}
 								}
+								requester.acceptAnswer(requestID, questionsList);
 							}
 						});
 				}
