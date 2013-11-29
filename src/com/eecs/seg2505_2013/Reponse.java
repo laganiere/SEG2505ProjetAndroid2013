@@ -2,6 +2,7 @@ package com.eecs.seg2505_2013;
 
 import java.util.Date;
 
+
 /**
  * Created with IntelliJ IDEA.
  * User: Julien Mageau, Nicholas Horton, Nicholas Seguin, Catherine Maathuis
@@ -59,4 +60,5 @@ public class Reponse {
     public Utilisateur getUtilisateur() {
         return utilisateur;
     }
+
 }

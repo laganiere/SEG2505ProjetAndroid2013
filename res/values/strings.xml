@@ -72,6 +72,7 @@
     <string-array name="espagnol">
        <item>seg2505</item>
     </string-array>
+
     
     <string name="tvQuestion">Question:</string>
     <string name="tvReponse">Réponse:</string>
@@ -95,5 +96,7 @@
     <string name="title_activity_evaluation">Evaluation</string>
      <string name="tvQuestionUtil">Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?</string>
     
+    <string name="choose_domain">Choisir le domaine</string>
+
     
 </resources>
