@@ -45,7 +45,7 @@ public class MyApplication extends android.app.Application {
 					String expert = (String)x.get(0);
 					String questionPhrase = q.getTexte();
 					if (questionPhrase != null) {
-						sendMessage("Q:" + domaine.getNom() + ":" + questionPhrase, expert);
+						sendMessage(QUESTION_PREFIX + domaine.getNom() + QUESTION_SEPARATOR + questionPhrase, expert);
 					}
 				}
 			}
@@ -125,6 +125,7 @@ public class MyApplication extends android.app.Application {
 		SwarmMessageThread.getAllThreads(new GotThreadsCB() {
 			@Override
 			public void gotThreads(List<SwarmMessageThread> threads) {
+				final ArrayList<Question> questionsList = new ArrayList<Question>();
 				for (SwarmMessageThread swarmMessageThread : threads) {
 						swarmMessageThread.getMessages(new GotMessagesCB() {
 							@Override
@@ -144,6 +145,7 @@ public class MyApplication extends android.app.Application {
 							}
 						});
 				}
+				requester.acceptAnswer(requestID, questionsList);
 			}
 		});
 	}
