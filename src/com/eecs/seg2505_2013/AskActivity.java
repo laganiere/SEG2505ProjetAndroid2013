@@ -41,8 +41,8 @@ public class AskActivity extends SwarmActivity {
 		domainSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
 			@Override
 		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int pos, long id) {
-				Toast.makeText(parentView.getContext(), "Selected domain " +
-				          parentView.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+				//Toast.makeText(parentView.getContext(), "Selected domain " +
+				//          parentView.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 				subDomainAdapter = new ArrayAdapter<String>(selectedItemView.getContext(), android.R.layout.simple_spinner_item, sousDomaines.get(parentView.getItemAtPosition(pos)));
 				        
 				// Specify the layout to use when the list of choices appears
@@ -69,7 +69,7 @@ public class AskActivity extends SwarmActivity {
 	  public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	    case R.id.action_home:
-	      Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show();
+	      //Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show();
 	      Intent intent = new Intent(this, MainActivity.class);
 		  startActivity(intent);
 	      break;
