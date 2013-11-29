@@ -35,44 +35,44 @@
     <string name="label_liste_categorie">Voila la liste des categories</string>
     <string name="button_showSwarm">Show Swarm</string>
     <string name="title_activity_messages">MessagesActivity</string>
-    
+
     <string-array name="Technologies">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="Loisirs">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="Langues">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="informatique">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="audiovideo">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="telephonie">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
-	 <string-array name="vins">
-       <item>seg2505</item>
+    <string-array name="vins">
+        <item>seg2505</item>
     </string-array>
-     <string-array name="echecs">
-       <item>seg2505</item>
+    <string-array name="echecs">
+        <item>seg2505</item>
     </string-array>
     <string-array name="soccer">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="anglais">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="francais">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
     <string-array name="espagnol">
-       <item>seg2505</item>
+        <item>seg2505</item>
     </string-array>
-    
+
     <string name="tvQuestion">Question:</string>
     <string name="tvReponse">Réponse:</string>
     <string name="tvAnswer">Le vin à prendre Le vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendre Le vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendre</string>
@@ -93,7 +93,8 @@
     <string name="ReptfSend">Envoyer</string>
     <string name="ReptvQuestionToAns">Quel vin serait approprie avec une salade de fruit?</string>
     <string name="title_activity_evaluation">Evaluation</string>
-     <string name="tvQuestionUtil">Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?</string>
-    
-    
+    <string name="tvQuestionUtil">Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?</string>
+    <string name="title_activity_addcategorie">MainActivity</string>
+    <string name="title_activity_submission">MainActivity</string>
+
 </resources>

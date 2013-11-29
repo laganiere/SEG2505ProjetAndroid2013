@@ -72,6 +72,8 @@ public class MainActivity extends SwarmActivity {
 	}
 	
 	public void onAjouterCategorie(View view) {
+		Intent intent = new Intent(this, ProposeDomaineActivity.class);
+		startActivity(intent);
 	}
 
 	public void OnSwarm(View view) {
