@@ -84,10 +84,12 @@ public class AskActivity extends SwarmActivity {
 	public void onSubmit(View view) {
 		Toast.makeText(this, "Submited", Toast.LENGTH_SHORT).show();
 		Question question = new Question(new Utilisateur(Swarm.user.username));
-		EditText text  = (EditText)findViewById(R.layout.activity_ask);
+		EditText text  = (EditText)findViewById(R.id.editText1);
+		System.out.println(text);
 		question.setTexte(text.getText().toString());
 		question.setDate(new Date());
 		question.setDomaine(new Domaine(subDomainSpinner.getItemAtPosition(subDomainSpinner.getSelectedItemPosition()).toString()));
 		((MyApplication)getApplicationContext()).sendQuestion(question);
+		finish();
 	}
 }
