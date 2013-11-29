@@ -34,7 +34,6 @@
             android:name="com.eecs.seg2505_2013.MessagesActivity"
             android:label="@string/title_activity_messages" >
         </activity>
-        
                <activity
             android:name="com.eecs.seg2505_2013.ReponseActivity"
             android:label="@string/app_name" >
@@ -53,9 +52,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.eecs.seg2505_2013.AskActivity" android:label="AskActivity"></activity>
-
     </application>
 
 </manifest>
