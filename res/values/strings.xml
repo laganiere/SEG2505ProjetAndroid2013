@@ -73,4 +73,27 @@
        <item>seg2505</item>
     </string-array>
     
+    <string name="tvQuestion">Question:</string>
+    <string name="tvReponse">Réponse:</string>
+    <string name="tvAnswer">Le vin à prendre Le vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendre Le vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendreLe vin à prendre</string>
+    <string name="tvExpert">Expert : </string>
+    <string name="tvTitle"><u>Lecture et evaluation de la reponse:</u></string>
+    <string name="tvNomExpert">Robert Laganière</string>
+    <string name="btnEvaluer">Évaluer</string>
+    <string name="tvEvaluation"><i>Qualité de la réponse : </i></string>
+    <string name="tvCommentaire">Commentaire : </string>
+    <string name="RepTvQ">Question:</string>
+    <string name="RepTvR">Repondre à une question:</string>
+    <string name="RepcbPertinente">-Question non pertinente au domaine d\'expertise</string>
+    <string name="RepcbDifficile">-Question trop difficile</string>
+    <string name="RepcbIncomplet">-Question incomplète</string>
+    <string name="RepcbOccup">-Je suis trop occupé pour répondre</string>
+    <string name="ReptvReponse">Réponse:</string>
+    <string name="ReptfRefuser">Refuser</string>
+    <string name="ReptfSend">Envoyer</string>
+    <string name="ReptvQuestionToAns">Quel vin serait approprie avec une salade de fruit?</string>
+    <string name="title_activity_evaluation">Evaluation</string>
+     <string name="tvQuestionUtil">Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?Quel vin serait-il approprié avec une salade de fruit?</string>
+    
+    
 </resources>
